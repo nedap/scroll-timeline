@@ -794,8 +794,13 @@ export function fractionalOffset(timeline, value) {
 
     // TODO: pass relative measurements (viewport, font-size, root font-size, etc. ) to resolvePx() to resolve relative units
     const position = resolvePx(value, {percentageReference: CSS.px(sourceScrollDistance)});
-    const fractionalOffset = position / sourceScrollDistance;
 
+    // If position is zero, then offset should also be zero. Even in the case that sourceScrollDistance is also zero.
+    if (position === 0) {
+      return 0;
+    }
+
+    const fractionalOffset = position / sourceScrollDistance;
     return fractionalOffset;
   }
 
