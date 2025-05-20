@@ -29,15 +29,18 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: 📣 Publish release to NPM
+      - name: 📣 Set version number
         run: |
           npm version from-git --allow-same-version
-          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: ⬆️ Push version
+      - name: ⬆️ Commit version
         run: |
           git add package.json
           git commit -m "chore: Release version [skip ci]"
           git push
+
+      - name: Publish release to NPM
+        run: |
+          npm publish
