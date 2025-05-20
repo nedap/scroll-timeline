@@ -31,7 +31,7 @@ jobs:
 
       - name: 📣 Publish release to NPM
         run: |
-          npm version from-git
+          npm version from-git --allow-same-version
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
