@@ -31,16 +31,16 @@ jobs:
 
       - name: 📣 Set version number
         run: |
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git config user.name github-actions[bot]
           npm version from-git --allow-same-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: ⬆️ Commit version
-        run: |
-          git add package.json
-          git commit -m "chore: Release version [skip ci]"
-          git push
-
-      - name: Publish release to NPM
+      - name: ⬆️ Publish release to NPM
         run: |
           npm publish
+
+      - name: ⬆️ Publish version
+        run: |
+          git push

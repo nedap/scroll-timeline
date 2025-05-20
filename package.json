@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "build-lite" : "vite build --config vite.config.lite.js",
+    "build-lite": "vite build --config vite.config.lite.js",
     "dev": "vite",
     "deploy": "npm run build && npm run build-lite",
     "test-setup": "node test/setup/checkout-wpt.mjs",
