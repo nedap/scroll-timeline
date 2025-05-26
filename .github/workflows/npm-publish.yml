@@ -28,20 +28,20 @@ jobs:
           always-auth: true
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: 📣 Set version number
+      - name: 🔢 Set version number
         run: |
           git config user.email github-actions[bot]@users.noreply.github.com
           git config user.name github-actions[bot]
           npm version from-git --allow-same-version
+
+      - name: 📣 Publish release to NPM
+        run: |
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: ⬆️ Publish release to NPM
-        run: |
-          npm publish
-
-      - name: ⬆️ Publish version
+      - name:🫸 Push version commit
         run: |
           git push
