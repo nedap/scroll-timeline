@@ -3,6 +3,14 @@
   "version": "1.1.0",
   "description": "A polyfill for scroll-driven animations on the web via ScrollTimeline",
   "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/scroll-timeline.js"
+    },
+    "./lite": {
+      "default": "./dist/scroll-timeline-lite.js"
+    }
+  },
   "scripts": {
     "build": "vite build",
     "build-lite": "vite build --config vite.config.lite.js",
